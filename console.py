@@ -121,12 +121,12 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return False
         
-        obj = objcts_storage["{}.{}".format(args[0], args[1])]
+        object = objcts_storage["{}.{}".format(args[0], args[1])]
         if args[2] in obj.__class__.__dict__.keys():
             make_sure = type(obj.__class__.__dict__[args[2]])
-            obj.__dict__[args[2]] = make_sure(args[3])
+            object.__dict__[args[2]] = make_sure(args[3])
         else:
-            obj.__dict__[args[2]] = args[3]
+            object.__dict__[args[2]] = args[3]
         storage.save()
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
