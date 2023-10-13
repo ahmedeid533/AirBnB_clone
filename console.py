@@ -48,20 +48,14 @@ class HBNBCommand(cmd.Cmd):
         args = split(arg)
         if arg in self.__get_class:
             for obj in storage.all().values():
-                print(obj.__class__.__name__)
                 if len(args) > 0 and args[0] == obj.__class__.__name__:
                     opjects.append(obj.__str__())
                 elif len(args) == 0:
                     opjects.append(obj.__str__())
             print(opjects)
+        else:
+            print("** class doesn't exist **")
     
 
 if __name__ == '__main__':
-
-    my_user = User()
-    my_user.first_name = "Betty"
-    my_user.last_name = "Bar"
-    my_user.email = "airbnb@mail.com"
-    my_user.password = "root"
-    storage.save()
     HBNBCommand().cmdloop()
