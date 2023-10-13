@@ -1,10 +1,8 @@
 #!/usr/bin/python3
-
 '''
 This module defines FileStorage which is used to serializes and deserializes
 instances to and fro json.
 '''
-
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -52,7 +50,7 @@ class FileStorage:
         (path: __file_path).
         '''
         dictionary = {}
-        for key in self.__objects.keys():
+        for key in FileStorage.__objects.keys():
             dictionary[key] = self.__objects[key].to_dict()
         with open(FileStorage.__file_path, "w") as file:
             json.dump(dictionary, file)
