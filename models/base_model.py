@@ -14,14 +14,16 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.updated_at = datetime.today()
         timeformat = "%Y-%m-%dT%H:%M:%S.%f"
-        if kwargs:
+        if len(kwargs) != 0:
             for key, val in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.strptime(val, timeformat)
                 else:
                     self.__dict__[key] = val
         else:
+            print("hi")
             models.storage.new(self)
+            print("hi")
 
     def __str__(self):
         '''
