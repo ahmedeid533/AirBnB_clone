@@ -31,7 +31,7 @@ class FileStorage:
         Returns:
             The dictionary __objects.
         '''
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         '''
@@ -44,7 +44,7 @@ class FileStorage:
         '''
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
 
-        self.__objects[key] = obj
+        FileStorage.__objects[key] = obj
 
     def save(self):
         '''
@@ -54,7 +54,7 @@ class FileStorage:
         dictionary = {}
         for key in self.__objects.keys():
             dictionary[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, "w+", encoding="utf-8") as file:
+        with open(FileStorage.__file_path, "w") as file:
             json.dump(dictionary, file)
 
     def reload(self):
@@ -63,9 +63,11 @@ class FileStorage:
         as instances.
         '''
         try:
-            with open(self.__file_path, "r", encoding="utf-8") as file:
+            with open(self.__file_path, "r") as file:
                 dictionary = json.load(file)
-                for key, value in dictionary.items():
-                    self.__objects[key] = eval(value['__class__'])(**value)
+                for opj in dictionary.values():
+                    class_name = opj["__class__"]
+                    del opj["__class__"]
+                    self.new(eval(class_name)(**opj))
         except Exception:
             pass
