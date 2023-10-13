@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 '''
 This module defines FileStorage which is used to serializes and deserializes
