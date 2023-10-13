@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
         """print opjects of one class or all classes"""
         opjects =[]
         args = split(arg)
-        if arg in self.__get_class:
+        if arg in self.__get_class or not arg:
             for obj in storage.all().values():
                 if len(args) > 0 and args[0] == obj.__class__.__name__:
                     opjects.append(obj.__str__())
