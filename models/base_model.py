@@ -8,8 +8,6 @@ import models
 class BaseModel:
     """defines all common attributes/methods for other classes"""
 
-    "you don't have to do Public instance attributes badr" 
-
     def __init__(self, *args, **kwargs):
         """init class"""
         self.created_at = datetime.today()
@@ -18,20 +16,17 @@ class BaseModel:
         timeformat = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
             for key, val in kwargs.items():
-                    if key == "created_at" or key == "updated_at":
-                        self.__dict__[key] = datetime.strptime(val, timeformat)
-                    else:
-                        self.__dict__[key] = val
+                if key == "created_at" or key == "updated_at":
+                    self.__dict__[key] = datetime.strptime(val, timeformat)
+                else:
+                    self.__dict__[key] = val
         else:
             models.storage.new(self)
-            
-    "do Public instance methods here badr"
 
     def __str__(self):
         '''
         Creates the unofficial string representation of a BaseModel instance.
         Format: [<class name>] (<self.id>) <self.__dict__>
-
         Returns:
             The string representation of the object.
             '''
