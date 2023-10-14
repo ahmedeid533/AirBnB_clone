@@ -21,9 +21,7 @@ class BaseModel:
                 else:
                     self.__dict__[key] = val
         else:
-            print("hi")
             models.storage.new(self)
-            print("hi")
 
     def __str__(self):
         '''
@@ -31,7 +29,7 @@ class BaseModel:
         Format: [<class name>] (<self.id>) <self.__dict__>
         Returns:
             The string representation of the object.
-            '''
+        '''
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
