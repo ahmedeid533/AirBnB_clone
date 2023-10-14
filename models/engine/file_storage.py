@@ -15,6 +15,8 @@ from models.user import User
 
 
 class FileStorage:
+    """vault for data"""
+    
     __file_path = "file.json"
     __objects = {}
 

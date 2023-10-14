@@ -11,20 +11,22 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """class HBNBCommand"""
 
     prompt = "(hbnb) "
 
-    __get_class={
-        "BaseModel":BaseModel,
-        "User":User,
-        "State":State,
-        "City":City,
-        "Place":Place,
-        "Amenity":Amenity,
-        "Review":Review
+    __get_class = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City,
+        "Place": Place,
+        "Amenity": Amenity,
+        "Review": Review
     }
+
     def default(self, arg):
         """continue the console when unknown command passed in"""
         pass
@@ -44,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """print opjects of one class or all classes"""
-        opjects =[]
+        opjects = []
         args = split(arg)
         if arg in self.__get_class or not arg:
             for obj in storage.all().values():
@@ -55,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
             print(opjects)
         else:
             print("** class doesn't exist **")
-    
+
     def do_show(self, arg):
         args = split(arg)
         objcts_storage = storage.all()
@@ -69,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         else:
             print(objcts_storage["{}.{}".format(args[0], args[1])])
-    
+
     def do_create(self, arg):
         """Create a new class instance"""
         args = split(arg)
@@ -120,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 3:
             print("** value missing **")
             return False
-        
+
         object = objcts_storage["{}.{}".format(args[0], args[1])]
         if args[2] in obj.__class__.__dict__.keys():
             make_sure = type(obj.__class__.__dict__[args[2]])
