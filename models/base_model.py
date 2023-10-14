@@ -21,9 +21,7 @@ class BaseModel:
                 else:
                     self.__dict__[key] = val
         else:
-            print("hi")
             models.storage.new(self)
-            print("hi")
 
     def __str__(self):
         '''
