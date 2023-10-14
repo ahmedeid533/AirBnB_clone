@@ -24,21 +24,22 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        '''
+        """
         Creates the unofficial string representation of a BaseModel instance.
         Format: [<class name>] (<self.id>) <self.__dict__>
         Returns:
             The string representation of the object.
-        '''
+        """
+        
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        ''' Updates the updated_at attribute with the current_time. '''
+        """Updates the updated_at attribute with the current_time.""" 
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        '''
+        """
         Creates a dictionary containing all keys/values of __dict__ of the
         instance.
         A key __class__ is added to this dictionary with the class name of the
@@ -46,7 +47,7 @@ class BaseModel:
 
         Returns:
             Dictionary representations of the BaseModel instance.
-        '''
+        """
         dictionary = self.__dict__.copy()
         dictionary['__class__'] = self.__class__.__name__
         dictionary['updated_at'] = dictionary['updated_at'].isoformat()
