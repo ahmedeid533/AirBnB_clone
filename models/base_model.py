@@ -24,8 +24,7 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """
-        Creates the unofficial string representation of a BaseModel instance.
+        """Creates the unofficial string representation of a BaseModel instance.
         Format: [<class name>] (<self.id>) <self.__dict__>
         Returns:
             The string representation of the object.
@@ -39,12 +38,10 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """
-        Creates a dictionary containing all keys/values of __dict__ of the
+        """Creates a dictionary containing all keys/values of __dict__ of the
         instance.
         A key __class__ is added to this dictionary with the class name of the
         object.
-
         Returns:
             Dictionary representations of the BaseModel instance.
         """
