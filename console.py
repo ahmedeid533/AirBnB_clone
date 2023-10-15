@@ -28,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def default(self, arg):
-        """continue the console when unknown command passed in"""
+        """continue the console when unknown command passed in """
         commands = {
             "all": self.do_all,
             "show": self.do_show,
