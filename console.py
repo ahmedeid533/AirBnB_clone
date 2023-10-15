@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         class_name = args[0]
         commandAndID = args[1].split('(')
         command = commandAndID[0]
-        ID = commandAndID[1][:-2]
+        ID = commandAndID[1][:-1]
         
         if command in commands.keys():
             send = "{} {}".format(class_name, ID)
@@ -63,7 +63,7 @@ class HBNBCommand(cmd.Cmd):
         """print opjects of one class or all classes"""
         opjects = []
         args = split(arg)
-        if arg in self.__get_class or not arg:
+        if args[0] in self.__get_class or not arg:
             for obj in storage.all().values():
                 if len(args) > 0 and args[0] == obj.__class__.__name__:
                     opjects.append(obj.__str__())
