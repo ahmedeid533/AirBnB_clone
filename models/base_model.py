@@ -24,16 +24,17 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """Creates the unofficial string representation of a BaseModel instance.
+        """Creates the unofficial string representation
+        of a BaseModel instance.
         Format: [<class name>] (<self.id>) <self.__dict__>
         Returns:
             The string representation of the object.
         """
-        
+
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """Updates the updated_at attribute with the current_time.""" 
+        """Updates the updated_at attribute with the current_time."""
         self.updated_at = datetime.now()
         models.storage.save()
 

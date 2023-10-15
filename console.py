@@ -124,8 +124,8 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         object = objcts_storage["{}.{}".format(args[0], args[1])]
-        if args[2] in obj.__class__.__dict__.keys():
-            make_sure = type(obj.__class__.__dict__[args[2]])
+        if args[2] in object.__class__.__dict__.keys():
+            make_sure = type(object.__class__.__dict__[args[2]])
             object.__dict__[args[2]] = make_sure(args[3])
         else:
             object.__dict__[args[2]] = args[3]
