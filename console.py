@@ -29,8 +29,25 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, arg):
         """continue the console when unknown command passed in"""
-        pass
-
+        commands = {
+            "all": self.do_all,
+            "show": self.do_show,
+            "destroy": self.do_destroy,
+            "count": self.do_count
+        }
+        args = arg.split('.')
+        class_name = args[0]
+        commandAndID = args[1].split('(')
+        command = commandAndID[0]
+        ID = commandAndID[1][:-2]
+        AllArgs = []
+        AllArgs.append(class_name)
+        AllArgs.append(ID)
+        if command in commands.keys():
+            send = "{} {}".format(class_name, AllArgs)
+            return commands[command](send)
+        print("*** Unknown syntax: {}".format(arg))
+        return False
     def emptyline(self):
         """Do nothing"""
         pass
@@ -130,6 +147,15 @@ class HBNBCommand(cmd.Cmd):
         else:
             object.__dict__[args[2]] = args[3]
         storage.save()
+
+    def do_count(self, arg):
+        """Retrieve the number of instances of a given class."""
+        args = split(arg)
+        count = 0
+        for obj in storage.all().values():
+            if args[0] == obj.__class__.__name__:
+                count += 1
+        print(count)
 
 
 if __name__ == '__main__':
