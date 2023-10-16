@@ -39,10 +39,10 @@ class HBNBCommand(cmd.Cmd):
         class_name = args[0]
         commandAndID = args[1].split('(')
         command = commandAndID[0]
-        ID = commandAndID[1][:-1]
+        ID_t = commandAndID[1][:-1]
 
         if command in commands.keys():
-            send = "{} {}".format(class_name, ID)
+            send = "{} {}".format(class_name, ID_t)
             return commands[command](send)
         print("*** Unknown syntax: {}".format(arg))
         return False
