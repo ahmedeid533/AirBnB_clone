@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         commandAndID = args[1].split('(')
         command = commandAndID[0]
         ID = commandAndID[1][:-1]
-        
+
         if command in commands.keys():
             send = "{} {}".format(class_name, ID)
             return commands[command](send)
