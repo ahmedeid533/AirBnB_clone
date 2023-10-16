@@ -46,6 +46,7 @@ class HBNBCommand(cmd.Cmd):
             return commands[command](send)
         print("*** Unknown syntax: {}".format(arg))
         return False
+
     def emptyline(self):
         """Do nothing"""
         pass

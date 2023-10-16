@@ -27,7 +27,6 @@ class FileStorage:
     def all(self):
         '''
         Accessor of the class attribute __objects.
-
         Returns:
             The dictionary __objects.
         '''
