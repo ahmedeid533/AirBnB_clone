@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 """entry point of the command interpreter"""
 import cmd
 from shlex import split
@@ -64,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
         """print opjects of one class or all classes"""
         opjects = []
         args = split(arg)
-        arg0 = "text"
+        args0 = "text"
         if arg:
             args0 = args[0]
         if args0 in self.__get_class or not arg:
