@@ -27,25 +27,25 @@ class HBNBCommand(cmd.Cmd):
         "Review": Review
     }
 
-    def default(self, arg):
-        """continue the console when unknown command passed in"""
-        commands = {
-            "all": self.do_all,
-            "show": self.do_show,
-            "destroy": self.do_destroy,
-            "count": self.do_count
-        }
-        args = arg.split('.')
-        class_name = args[0]
-        commandAndID = args[1].split('(')
-        command = commandAndID[0]
-        ID = commandAndID[1][:-1]
+    # def default(self, arg):
+    #     """continue the console when unknown command passed in"""
+    #     commands = {
+    #         "all": self.do_all,
+    #         "show": self.do_show,
+    #         "destroy": self.do_destroy,
+    #         "count": self.do_count
+    #     }
+    #     args = arg.split('.')
+    #     class_name = args[0]
+    #     commandAndID = args[1].split('(')
+    #     command = commandAndID[0]
+    #     ID_t = commandAndID[1][:-1]
 
-        if command in commands.keys():
-            send = "{} {}".format(class_name, ID)
-            return commands[command](send)
-        print("*** Unknown syntax: {}".format(arg))
-        return False
+    #     if command in commands.keys():
+    #         send = "{} {}".format(class_name, ID_t)
+    #         return commands[command](send)
+    #     print("*** Unknown syntax: {}".format(arg))
+    #     return False
 
     def emptyline(self):
         """Do nothing"""
@@ -64,7 +64,10 @@ class HBNBCommand(cmd.Cmd):
         """print opjects of one class or all classes"""
         opjects = []
         args = split(arg)
-        if args[0] in self.__get_class or not arg:
+        args0 = "text"
+        if arg:
+            args0 = args[0]
+        if args0 in self.__get_class or not arg:
             for obj in storage.all().values():
                 if len(args) > 0 and args[0] == obj.__class__.__name__:
                     opjects.append(obj.__str__())
