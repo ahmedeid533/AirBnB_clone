@@ -51,34 +51,25 @@ section.places article div.information div {
 section.places article div.information div.max_guest {
     position: relative;
     width: 100px;
-    top: 55px;
 }
 section.places article div.information div.max_guest::before {
-    position: absolute;
     left: 25px;
-    top: -50px;
     content: url(../images/icon_group.png);
 }
 section.places article div.information div.number_rooms {
     position: relative;
     width: 100px;
-    top: 55px;
 }
 section.places article div.information div.number_rooms::before {
-    position: absolute;
     left: 25px;
-    top: -50px;
     content: url(../images/icon_bed.png);
 }
 section.places article div.information div.number_bathrooms {
     position: relative;
     width: 100px;
-    top: 55px;
 }
 section.places article div.information div.number_bathrooms::before {
-    position: absolute;
     left: 25px;
-    top: -50px;
     content: url(../images/icon_bath.png);
 }
 section.places article div.user {
@@ -90,4 +81,18 @@ section.places article div.description {
     position: relative;
     top: 20px;
     text-align: left;
+}
+
+.plac{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.price_by_night p{
+    margin: 0;
+}
+
+.information p{
+    margin: 0;
 }

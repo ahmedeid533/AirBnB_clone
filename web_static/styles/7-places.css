@@ -13,8 +13,6 @@ section.places article {
     position: relative;
     width: 390px;
     padding: 20px;
-    padding-top: 0;
-    padding-bottom: 15px;
     margin: 20px;
     border: 1px solid #FF5A5F;
     border-radius: 4px;
